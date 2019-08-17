@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project MDT_GUI">
+
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="/Users/james/Desktop"/>
+	
+	
+    	<taskdef name="bundleapp"
+    	             classname="com.oracle.appbundler.AppBundlerTask"   
+    	             classpath="lib/appbundler_2.11-0.8.1.jar" />
+	
+	
+	<target name="bundle-buttonDemo">
+	        <bundleapp outputdirectory="dist"
+	            name="MDT"
+	            displayname="MDT_GUI"
+	            identifier="GUI_Driver.GUI_Driver"
+	            mainclassname="GUI_Driver.GUI_Driver">
+	            <classpath file="/Users/james/Desktop/g.jar" />
+	        </bundleapp>
+	    </target>
+	
+	
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/g.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="GUI_Driver.GUI_Driver"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <fileset dir="${dir.workspace}/MDT/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.workspace}/MDT/bin/resources/sqlite-jdbc-3.27.2.1.jar"/>
+        </jar>
+    </target>
+	
+</project>
