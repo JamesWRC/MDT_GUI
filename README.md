@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="https://i.imgur.com/EKdmdLq.png" alt="Project logo"></a>
+ <img src="https://i.imgur.com/GdVoGvv.png" alt="Project logo"></a>
 </p>
 <h3 align="center">Malaria Diagnosis Tool</h3>
 
