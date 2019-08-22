@@ -97,14 +97,13 @@ public class MainView {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void dropdown() throws SQLException {
-		
-		selectByCodeLbl = new JLabel("Country Code: ");
+		selectByCodeLbl = new JLabel("Country Name: ");
+
 		selectByCodeLbl.setBounds(100, 50, 100, 20);
 		
 		countryCodeComboBox = new JComboBox( dbh.getAllCountryCodes(true).toArray());
 		countryCodeComboBox.setBounds(185, 50, 100, 20);
 		countryCodeComboBox.setToolTipText("Select country by code");
-		countryCodeComboBox.addActionListener(new CountrySelectedListener(countryCodeComboBox, resultInfo, mainFrame));
 		
 		comboBoxOrLbl = new JLabel("------\t OR \t------");
 		comboBoxOrLbl.setBounds(175, 75, 200, 20);
@@ -113,9 +112,13 @@ public class MainView {
 		selectByNameLbl.setBounds(10, 100, 275, 15);
 		
 		countryNameComboBox = new JComboBox( dbh.getAllCountryCodes(false).toArray());
+		CountrySelectedListener nameCSL = new CountrySelectedListener(countryNameComboBox, countryCodeComboBox, resultInfo, mainFrame);
+		CountrySelectedListener codeCSL = new CountrySelectedListener(countryCodeComboBox, countryNameComboBox, resultInfo, mainFrame);
+		countryCodeComboBox.addActionListener(codeCSL);
+
 		countryNameComboBox.setBounds(100, 100, 275, 15);
 		countryNameComboBox.setToolTipText("Select country by name");
-		countryNameComboBox.addActionListener(new CountrySelectedListener(countryNameComboBox, resultInfo, mainFrame));
+		countryNameComboBox.addActionListener(nameCSL);
 
 		
 		tempComboBox = new JComboBox();

@@ -16,7 +16,7 @@ import model.Country;
 
 public class CountrySelectedListener implements ActionListener {
 	@SuppressWarnings("rawtypes")
-	private JComboBox comboBox;
+	private JComboBox comboBox, boxToUpdate;
 	private JTextArea resultInfo;
 	private JFrame mainFrame;
 	private JProgressBar bar1 = new JProgressBar();
@@ -24,7 +24,7 @@ public class CountrySelectedListener implements ActionListener {
 	private JProgressBar bar3 = new JProgressBar();
 	private JProgressBar bar4 = new JProgressBar();
 	private JProgressBar bar5 = new JProgressBar();
-	private Country countrySelected;
+	private Country countrySelected, countrySelectedSecondaryName;
 	private DatabaseHelper dbh;
 	private JLabel falciparumLbl = new JLabel();
 	private JLabel vivaxLbl = new JLabel();
@@ -40,9 +40,10 @@ public class CountrySelectedListener implements ActionListener {
 	private final static int PROG_BAR_LBL_OFFSET = 15;
 	
 	
-	public CountrySelectedListener(@SuppressWarnings("rawtypes") JComboBox comboBox, JTextArea resultInfo, JFrame mainFrame)
+	public CountrySelectedListener(@SuppressWarnings("rawtypes") JComboBox comboBox, JComboBox boxToUpdate, JTextArea resultInfo, JFrame mainFrame)
 			throws SQLException {
 		this.comboBox = comboBox;
+		this.boxToUpdate = boxToUpdate;
 		this.resultInfo = resultInfo;
 		this.mainFrame = mainFrame;
 		dbh = new DatabaseHelper();
@@ -65,10 +66,19 @@ public class CountrySelectedListener implements ActionListener {
 			malariaeLbl.setVisible(false);
 			ovaleLbl.setVisible(false);
 			knowlsiLbl.setVisible(false);
-			
+			comboBox.getSelectedItem().toString();
 
 
 			countrySelected = dbh.getCountry(comboBox.getSelectedItem().toString());
+			//set the opposite box to the respective name / code.
+			//ie if AU is selected in the country code box, then the country name
+			//in the countyName box changes to Australia
+			if(comboBox.getSelectedItem().toString().length() == 2) {
+				boxToUpdate.setSelectedItem(countrySelected.getCountryName());
+			}else {
+				boxToUpdate.setSelectedItem(countrySelected.getCountryCode());
+			}
+			//boxToUpdate.setSelectedItem(countrySelected.get);
 
 			// Once set to true, it can't be printed out again
 			boolean falciparumSet = false;
