@@ -99,10 +99,10 @@ public class MainView {
 	public void dropdown() throws SQLException {
 		
 		selectByCodeLbl = new JLabel("Country Code: ");
-		selectByCodeLbl.setBounds(100, 50, 100, 15);
+		selectByCodeLbl.setBounds(100, 50, 100, 20);
 		
 		countryCodeComboBox = new JComboBox( dbh.getAllCountryCodes(true).toArray());
-		countryCodeComboBox.setBounds(185, 50, 100, 15);
+		countryCodeComboBox.setBounds(185, 50, 100, 20);
 		countryCodeComboBox.setToolTipText("Select country by code");
 		countryCodeComboBox.addActionListener(new CountrySelectedListener(countryCodeComboBox, resultInfo, mainFrame));
 		
@@ -137,7 +137,7 @@ public class MainView {
 		resultInfo = new JTextArea(str, 6, 10);
 		scrollPane = new JScrollPane(resultInfo);
 		scrollPane.setBounds(10, 500, 430, 145);
-		resultInfo.setText("Welcome to the Malria Diagnosis Tool. To start simply select a country code or country name to see what the malaria types are in the selected country");
+		resultInfo.setText("Welcome to the Malaria Diagnosis Tool. To start simply select a country code or country name to see what the malaria types are in the selected country");
 		resultInfo.setLineWrap(true);
 		resultInfo.setWrapStyleWord(true);
 		resultInfo.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
