@@ -1,7 +1,10 @@
+
 <p align="center">
   <a href="" rel="noopener">
- <img src="https://i.imgur.com/GdVoGvv.png" alt="Project logo"></a>
+    <img src="https://i.imgur.com/GdVoGvv.png" alt="Project logo">
+  </a>
 </p>
+
 <h3 align="center">Malaria Diagnosis Tool</h3>
 
 <div align="center">
@@ -15,12 +18,13 @@
 
 ---
 
-<p align="center"> This Malaria Diagnosis Tool (MDT) helps lab scientists diagnose which type of malaria the patient may have depending on the country they have recently come from.
+<p align="center">
+This Malaria Diagnosis Tool (MDT) helps lab scientists diagnose which type of malaria the patient may have depending on the country they have recently come from.
 
 - This is a full GUI version which essentaily means its just a visual interface of the program. It has all the features of the Command Line Interface (CLI) version.
 - For a CLI version [please go here](https://github.com/JamesWRC/MDT_Lite)
 
-  </p>
+</p>
 
 ## 📝 Table of Contents
 
